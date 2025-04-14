@@ -16,7 +16,7 @@
   },
   "context": {
     "env": "",
-    "ragEnabled": false,
+    "ragEnabled": true,
     "kendraIndexArn": null,
     "kendraIndexLanguage": "ja",
     "kendraDataSourceBucketName": null,
@@ -33,7 +33,7 @@
     "rerankingModelId": null,
     "queryDecompositionEnabled": false,
     "selfSignUpEnabled": true,
-    "allowedSignUpEmailDomains" ["amazon.com", "amazon.jp"] ,
+    "allowedSignUpEmailDomains": ["amazon.com", "amazon.jp"] ,
     "samlAuthEnabled": false,
     "samlCognitoDomainName": "",
     "samlCognitoFederatedIdentityProviderName": "",
