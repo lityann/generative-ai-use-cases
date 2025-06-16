@@ -75,6 +75,14 @@ GenU は生成 AI を活用した多様なユースケースを標準で提供�
         <td>ダイアグラム生成</td>
         <td>ダイアグラム生成は、あらゆるトピックに関する文章や内容を最適な図を用いて視覚化します。 テキストベースで簡単に図を生成でき、プログラマーやデザイナーでなくても効率的にフローチャートなどの図を作成できます。</td>
       </tr>
+      <tr>
+        <td>議事録生成</td>
+        <td>音声録音またはリアルタイム文字起こしから議事録を自動生成します。プロンプトを書く必要はなく、原文に近い文字起こし、新聞記事、FAQ形式から選択できます。</td>
+      </tr>
+      <tr>
+        <td>音声チャット</td>
+        <td>音声チャットでは生成 AI と双方向の音声によるチャットが可能です。自然な会話と同様、AI の発言中に割り込んで話すこともできます。また、システムプロンプトを設定することで、特定の役割を持った AI と音声で会話することもできます。</td>
+      </tr>
     </tbody>
   </table>
 </details>
@@ -93,10 +101,12 @@ Knowledge Base を利用する場合は、[Advanced Parsing](docs/ja/DEPLOY_OPTI
 また Knowledge Base では、[メタデータフィルターの設定](docs/ja/DEPLOY_OPTION.md#メタデータフィルターの設定) も可能です。
 例えば「組織ごとにアクセス可能なデータソースを切り替えたい」や「UI からユーザーがフィルタを設定したい」といった要件を満たすことが可能です。
 
+また、[MCP チャットを有効化](docs/ja/DEPLOY_OPTION.md#mcp-チャットユースケースの有効化) して外部サービスの MCP サーバーを [packages/cdk/mcp-api/mcp.json](/packages/cdk/mcp-api/mcp.json) に追加することで、AWS 外のデータを参照する RAG を構築することも可能です。
+
 </details>
 
 <details markdown="1">
-  <summary><strong><ins>独自に作成した AI エージェントや Bedrock Flows などを社内で利用したい</ins></strong></summary>
+  <summary><strong><ins>独自に作成した Bedrock Agents や Bedrock Flows などを社内で利用したい。</ins></strong></summary>
 
 GenU で [エージェントを有効化](docs/ja/DEPLOY_OPTION.md#agent-チャットユースケースの有効化)すると Web 検索エージェントと Code Interpreter エージェントが作成されます。
 Web 検索エージェントは、ユーザーの質問に回答するための情報を Web で検索し、回答します。例えば「AWS の GenU ってなに？」という質問に回答できます。
@@ -109,6 +119,8 @@ GenU をエージェント活用のプラットフォームとして利用する
 また、オプションで [不要な標準ユースケースを非表示](docs/ja/DEPLOY_OPTION.md#特定のユースケースを非表示にする) にしたり、[エージェントをインライン表示](docs/ja/DEPLOY_OPTION.md#agent-をインライン表示にする) することで、よりエージェントに特化したプラットフォームとして GenU をご利用いただくことが可能です。
 
 Bedrock Flows に関しても同様に [インポート機能](docs/ja/DEPLOY_OPTION.md#flow-チャットユースケースの有効化) がございますので、ぜひご活用ください。
+
+また、[MCP チャットを有効化](docs/ja/DEPLOY_OPTION.md#mcp-チャットユースケースの有効化) して外部サービスの MCP サーバーを [packages/cdk/mcp-api/mcp.json](/packages/cdk/mcp-api/mcp.json) に追加することで、AWS 外のサービスにも何らかのアクションを起こすエージェントを作成することも可能です。
 
 </details>
 
@@ -142,7 +154,7 @@ GenU は OSS ですので、カスタマイズして独自のユースケース�
 GenU のデプロイには [AWS Cloud Development Kit](https://aws.amazon.com/jp/cdk/)（以降 CDK）を利用します。CDK の実行環境が用意できない場合は、以下のデプロイ方法を参照してください。
 
 - [AWS CloudShell を利用したデプロイ方法 (手元の環境を用意することが難しい場合)](docs/ja/DEPLOY_ON_CLOUDSHELL.md)
-- [Workshop](https://catalog.workshops.aws/generative-ai-use-cases-jp)
+- Workshop ([日本語](https://catalog.workshops.aws/generative-ai-use-cases-jp) / [英語](https://catalog.workshops.aws/generative-ai-use-cases))
 
 まず、以下のコマンドを実行してください。全てのコマンドはリポジトリのルートで実行してください。
 
@@ -208,6 +220,7 @@ GenU をご利用いただく際の、構成と料金試算例を公開してお
 
 ## 参照
 
+- [GitHub: Generative AI Use Cases を 1 click でデプロイする](https://github.com/aws-samples/sample-one-click-generative-ai-solutions)
 - [ブログ: 生成 AI アプリをノーコードで作成・社内配布できる GenU ユースケースビルダー](https://aws.amazon.com/jp/blogs/news/genu-use-cases-builder/)
 - [ブログ: RAG プロジェクトを成功させる方法 #1 ~ あるいは早く失敗しておく方法 ~](https://aws.amazon.com/jp/builders-flash/202502/way-to-succeed-rag-project/)
 - [ブログ: RAG チャットで精度向上のためのデバッグ方法](https://qiita.com/sugimount-a/items/7ed3c5fc1eb867e28566)

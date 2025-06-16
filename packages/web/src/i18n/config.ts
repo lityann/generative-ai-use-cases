@@ -7,14 +7,15 @@ import { initReactI18next } from 'react-i18next';
 import yaml from 'js-yaml';
 
 /* eslint-disable i18nhelper/no-jp-string */
-/* eslint-disable i18nhelper/no-jp-comment */
 
 // Define the supported languages as an object.
 // This is for use when the user manually switches languages.
 export const supportedLngs = {
   en: 'English',
   ja: '日本語',
-  // zh: '中文',
+  th: 'ไทย',
+  zh: '中文',
+  vi: 'Tiếng Việt',
   // ko: '한국어',
 };
 
@@ -39,6 +40,11 @@ i18n
     // React does this escape for us, so we turn it off this time.
     interpolation: {
       escapeValue: false,
+      format: (value, format) => {
+        if (format === 'uppercase') return value.toUpperCase();
+        if (format === 'lowercase') return value.toLowerCase();
+        return value;
+      },
     },
     react: {
       transKeepBasicHtmlNodesFor: ['wbr'],

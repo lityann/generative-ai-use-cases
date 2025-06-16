@@ -5,9 +5,9 @@
 
 English | [日本語](./README_ja.md)
 
-Application implementation with business use cases for safely utilizing generative AI in business operations
+Well-architected application implementation with business use cases for utilizing generative AI in business operations
 
-  <img src="./docs/assets/images/sc_lp_en.png" alt="Application implementation with business use cases for safely utilizing generative AI in business operations" width="68%">
+  <img src="./docs/assets/images/sc_lp_en.png" alt="Well-architected application implementation with business use cases for utilizing generative AI in business operations" width="68%">
 </div>
 
 > [!IMPORTANT]
@@ -50,6 +50,11 @@ GenU provides a variety of standard use cases leveraging generative AI. These us
         <td>LLMs are good at summarizing large amounts of text. Beyond simple summarization, they can also extract necessary information in a conversational format after being given text as context. For example, after reading a contract, you can ask questions like "What are the conditions for XXX?" or "What is the amount for YYY?"</td>
       </tr>
       <tr>
+        <td>Meeting Minutes</td>
+        <td>Automatically generate meeting minutes from audio recordings or real-time transcription. Choose from Transcription, News Paper, or FAQ style with zero prompt engineering required.
+        </td>
+      </tr>
+      <tr>
         <td>Writing</td>
         <td>LLMs can suggest improvements from a more objective perspective, considering not only typos but also the flow and content of the text. You can expect to improve quality by having the LLM objectively check points you might have missed before showing your work to others.</td>
       </tr>
@@ -77,6 +82,10 @@ GenU provides a variety of standard use cases leveraging generative AI. These us
         <td>Diagram Generation</td>
         <td>Diagram generation visualizes text and content on any topic using optimal diagrams. It allows for easy text-based diagram creation, enabling efficient creation of flowcharts and other diagrams even for non-programmers and non-designers.</td>
       </tr>
+      <tr>
+        <td>Voice Chat</td>
+        <td>In Voice Chat, you can have a bidirectional voice chat with generative AI. Similar to natural conversation, you can also interrupt and speak while the AI is talking. Also, by setting a system prompt, you can have voice conversations with AI that has specific roles.</td>
+      </tr>
     </tbody>
   </table>
 </details>
@@ -95,10 +104,12 @@ When using Knowledge Base, advanced RAG features such as [Advanced Parsing](docs
 Knowledge Base also allows for [Metadata Filter Settings](docs/en/DEPLOY_OPTION.md#metadata-filter-configuration).
 For example, you can meet requirements such as "switching accessible data sources by organization" or "allowing users to set filters from the UI."
 
+Additionally, it is possible to build a RAG that references data outside of AWS by [enabling MCP chat](docs/en/DEPLOY_OPTION.md#enabling-mcp-chat-use-case) and adding an external service's MCP server to [packages/cdk/mcp-api/mcp.json](/packages/cdk/mcp-api/mcp.json).
+
 </details>
 
 <details markdown="1">
-  <summary><strong><ins>I want to use custom AI agents or Bedrock Flows within my organization</ins></strong></summary>
+  <summary><strong><ins>I want to use custom Bedrock Agents or Bedrock Flows within my organization</ins></strong></summary>
 
 When you [enable agents](docs/en/DEPLOY_OPTION.md#enabling-agent-chat-use-case) in GenU, Web Search Agent and Code Interpreter Agent are created.
 The Web Search Agent searches the web for information to answer user questions. For example, it can answer "What is AWS GenU?"
@@ -111,6 +122,8 @@ By using GenU as a platform for agent utilization, you can leverage GenU's [rich
 Additionally, you can [hide unnecessary standard use cases](docs/en/DEPLOY_OPTION.md#hiding-specific-use-cases) or [display agents inline](docs/en/DEPLOY_OPTION.md#displaying-agents-inline) to use GenU as a more agent-focused platform.
 
 Similarly, there is an [import feature](docs/en/DEPLOY_OPTION.md#enabling-flow-chat-use-case) for Bedrock Flows, so please make use of it.
+
+Additionally, you can create agents that perform actions on services outside AWS by [enabling MCP chat](docs/en/DEPLOY_OPTION.md#enabling-mcp-chat-use-case) and adding external MCP servers to [packages/cdk/mcp-api/mcp.json](/packages/cdk/mcp-api/mcp.json).
 
 </details>
 
@@ -144,7 +157,7 @@ In that case, please be careful about conflicts with GenU's main branch.
 GenU deployment uses [AWS Cloud Development Kit](https://aws.amazon.com/jp/cdk/) (CDK). If you cannot prepare a CDK execution environment, refer to the following deployment methods:
 
 - [Deployment method using AWS CloudShell (if preparing your own environment is difficult)](docs/en/DEPLOY_ON_CLOUDSHELL.md)
-- [Workshop](https://catalog.workshops.aws/generative-ai-use-cases-jp)
+- Workshop ([English](https://catalog.workshops.aws/generative-ai-use-cases) / [Japanese](https://catalog.workshops.aws/generative-ai-use-cases-jp))
 
 First, run the following command. All commands should be executed at the repository root.
 
@@ -210,6 +223,7 @@ If you would like to have your use case featured, please contact us via [Issue](
 
 ## References
 
+- [GitHub (Japanese): How to deploy GenU by one click](https://github.com/aws-samples/sample-one-click-generative-ai-solutions)
 - [Blog (Japanese): GenU Use Case Builder for Creating and Distributing Generative AI Apps with No Code](https://aws.amazon.com/jp/blogs/news/genu-use-cases-builder/)
 - [Blog (Japanese): How to Make RAG Projects Successful #1 ~ Or How to Fail Fast ~](https://aws.amazon.com/jp/builders-flash/202502/way-to-succeed-rag-project/)
 - [Blog (Japanese): Debugging Methods to Improve Accuracy in RAG Chat](https://qiita.com/sugimount-a/items/7ed3c5fc1eb867e28566)

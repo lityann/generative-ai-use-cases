@@ -19,7 +19,10 @@ import {
   PiVideoCamera,
   PiFlowArrow,
   PiMagicWand,
+  PiMicrophoneBold,
   PiTreeStructure,
+  PiNotebook,
+  PiGraph,
 } from 'react-icons/pi';
 import { Outlet } from 'react-router-dom';
 import Drawer, { ItemProps } from './components/Drawer';
@@ -40,10 +43,12 @@ const ragKnowledgeBaseEnabled: boolean =
   import.meta.env.VITE_APP_RAG_KNOWLEDGE_BASE_ENABLED === 'true';
 const agentEnabled: boolean = import.meta.env.VITE_APP_AGENT_ENABLED === 'true';
 const inlineAgents: boolean = import.meta.env.VITE_APP_INLINE_AGENTS === 'true';
+const mcpEnabled: boolean = import.meta.env.VITE_APP_MCP_ENABLED === 'true';
 const {
   visionEnabled,
   imageGenModelIds,
   videoGenModelIds,
+  speechToSpeechModelIds,
   agentNames,
   flowChatEnabled,
 } = MODELS;
@@ -123,12 +128,30 @@ const App: React.FC = () => {
           };
         })
       : []),
+    mcpEnabled
+      ? {
+          label: t('mcp_chat.title'),
+          to: '/mcp',
+          icon: <PiGraph />,
+          display: 'usecase' as const,
+          sub: 'Experimental',
+        }
+      : null,
     flowChatEnabled
       ? {
           label: t('navigation.flowChat'),
           to: '/flow-chat',
           icon: <PiFlowArrow />,
           display: 'usecase' as const,
+        }
+      : null,
+    speechToSpeechModelIds.length > 0 && enabled('voiceChat')
+      ? {
+          label: t('navigation.voiceChat'),
+          to: '/voice-chat',
+          icon: <PiMicrophoneBold />,
+          display: 'usecase' as const,
+          sub: 'Experimental',
         }
       : null,
     enabled('generate')
@@ -144,6 +167,14 @@ const App: React.FC = () => {
           label: t('navigation.summary'),
           to: '/summarize',
           icon: <PiNote />,
+          display: 'usecase' as const,
+        }
+      : null,
+    enabled('meetingMinutes')
+      ? {
+          label: t('navigation.meetingMinutes'),
+          to: '/meeting-minutes',
+          icon: <PiNotebook />,
           display: 'usecase' as const,
         }
       : null,
